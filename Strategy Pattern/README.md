@@ -11,7 +11,7 @@ To improve flexibility and maintainability, the system is refactored using the *
 ---
 
 ## UML Diagram
-![UMLDiagram](UMLImage.png)
+![UML Diagram](UMLDiagram/UMLImage.png)
 
 ---
 
