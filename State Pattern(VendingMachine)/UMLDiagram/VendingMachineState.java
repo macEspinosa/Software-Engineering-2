@@ -1,7 +1,6 @@
-// VendingMachineState.java
 public interface VendingMachineState {
-    void selectItem(VendingMachine vendingMachine);
-    void insertCoin(VendingMachine vendingMachine, int amount);
-    void dispenseItem(VendingMachine vendingMachine);
-    void setOutOfOrder(VendingMachine vendingMachine);
+    void selectItem(VendingMachine machine);
+    void insertCoin(VendingMachine machine, double amount);
+    void dispenseItem(VendingMachine machine);
+    void setOutOfOrder(VendingMachine machine);
 }

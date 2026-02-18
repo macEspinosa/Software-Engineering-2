@@ -1,23 +1,22 @@
-// OutOfOrderState.java
 public class OutOfOrderState implements VendingMachineState {
     
     @Override
-    public void selectItem(VendingMachine vendingMachine) {
-        System.out.println("Machine is out of order");
+    public void selectItem(VendingMachine machine) {
+        System.out.println("Machine out of order. Please try again later.");
     }
     
     @Override
-    public void insertCoin(VendingMachine vendingMachine, int amount) {
-        System.out.println("Machine is out of order");
+    public void insertCoin(VendingMachine machine, double amount) {
+        System.out.println("Machine out of order. Please try again later.");
     }
     
     @Override
-    public void dispenseItem(VendingMachine vendingMachine) {
-        System.out.println("Machine is out of order");
+    public void dispenseItem(VendingMachine machine) {
+        System.out.println("Machine out of order. Please try again later.");
     }
     
     @Override
-    public void setOutOfOrder(VendingMachine vendingMachine) {
-        System.out.println("Machine is already out of order");
+    public void setOutOfOrder(VendingMachine machine) {
+        System.out.println("Machine is already out of order.");
     }
 }

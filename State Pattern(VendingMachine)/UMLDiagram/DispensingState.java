@@ -1,23 +1,25 @@
-// DispensingState.java
 public class DispensingState implements VendingMachineState {
     
     @Override
-    public void selectItem(VendingMachine vendingMachine) {
-        System.out.println("Cannot select item while dispensing");
+    public void selectItem(VendingMachine machine) {
+        System.out.println("Please wait, dispensing in progress...");
     }
     
     @Override
-    public void insertCoin(VendingMachine vendingMachine, int amount) {
-        System.out.println("Cannot insert coins while dispensing");
+    public void insertCoin(VendingMachine machine, double amount) {
+        System.out.println("Please wait, dispensing in progress...");
     }
     
     @Override
-    public void dispenseItem(VendingMachine vendingMachine) {
-        System.out.println("Already dispensing");
+    public void dispenseItem(VendingMachine machine) {
+        System.out.println("Dispensing complete. Returning to idle state.");
+        // Auto-transition to Idle state after dispensing
+        machine.setState(new IdleState());
     }
     
     @Override
-    public void setOutOfOrder(VendingMachine vendingMachine) {
-        System.out.println("Cannot set out of order while dispensing");
+    public void setOutOfOrder(VendingMachine machine) {
+        System.out.println("Machine is now out of order.");
+        machine.setState(new OutOfOrderState());
     }
 }

@@ -1,40 +1,40 @@
-// ItemSelectedState.java
 public class ItemSelectedState implements VendingMachineState {
     
     @Override
-    public void selectItem(VendingMachine vendingMachine) {
-        System.out.println("Item already selected. Please insert coins or dispense");
+    public void selectItem(VendingMachine machine) {
+        System.out.println("Item already selected. Please insert coins or dispense.");
     }
     
     @Override
-    public void insertCoin(VendingMachine vendingMachine, int amount) {
-        vendingMachine.addBalance(amount);
-        System.out.println("Inserted $" + amount + ". Current balance: $" + vendingMachine.getBalance());
+    public void insertCoin(VendingMachine machine, double amount) {
+        machine.setBalance(machine.getBalance() + amount);
+        System.out.println("Inserted: $" + amount + " | Total balance: $" + machine.getBalance());
         
-        // Check if enough money inserted
-        if (vendingMachine.getBalance() >= vendingMachine.getItemPrice()) {
-            System.out.println("Sufficient funds. You can now dispense the item");
+        // Assuming item price is $1.00 for this example
+        if (machine.getBalance() >= 1.0) {
+            System.out.println("Sufficient funds. Please dispense item.");
         }
     }
     
     @Override
-    public void dispenseItem(VendingMachine vendingMachine) {
-        if (vendingMachine.getBalance() >= vendingMachine.getItemPrice()) {
-            vendingMachine.dispenseItem();
-            vendingMachine.setState(new DispensingState());
-            
-            // Simulate dispensing process and transition to idle
+    public void dispenseItem(VendingMachine machine) {
+        if (machine.getBalance() >= 1.0) {
             System.out.println("Dispensing item...");
-            vendingMachine.completeDispensing();
+            machine.setInventory(machine.getInventory() - 1);
+            machine.setBalance(machine.getBalance() - 1.0);
+            
+            System.out.println("Item dispensed. Remaining balance: $" + machine.getBalance());
+            System.out.println("Remaining inventory: " + machine.getInventory());
+            
+            machine.setState(new DispensingState());
         } else {
-            int remaining = vendingMachine.getItemPrice() - vendingMachine.getBalance();
-            System.out.println("Insufficient funds. Need $" + remaining + " more");
+            System.out.println("Insufficient funds. Please insert $" + (1.0 - machine.getBalance()) + " more.");
         }
     }
     
     @Override
-    public void setOutOfOrder(VendingMachine vendingMachine) {
-        System.out.println("Vending machine is now out of order");
-        vendingMachine.setState(new OutOfOrderState());
+    public void setOutOfOrder(VendingMachine machine) {
+        System.out.println("Machine is now out of order.");
+        machine.setState(new OutOfOrderState());
     }
 }

@@ -1,30 +1,29 @@
-// VendingMachineDemo.java
 public class VendingMachineDemo {
     public static void main(String[] args) {
         // Create vending machine with 5 items
-        VendingMachine vendingMachine = new VendingMachine(5);
+        VendingMachine machine = new VendingMachine(5);
         
-        System.out.println("=== Testing Normal Operation ===");
-        vendingMachine.selectItem();                    // Should work
-        vendingMachine.insertCoin(5);                   // Insert $5
-        vendingMachine.insertCoin(5);                   // Insert another $5
-        vendingMachine.dispenseItem();                   // Should work
+        System.out.println("=== Vending Machine Demo ===\n");
         
-        System.out.println("\n=== Testing Invalid Operations ===");
-        vendingMachine.insertCoin(5);                    // Should fail (need to select item first)
-        vendingMachine.selectItem();                      // Should work
-        vendingMachine.selectItem();                      // Should fail (already selected)
+        // Test Idle State
+        System.out.println("1. Testing Idle State:");
+        machine.selectItem(); // Should work
+        machine.insertCoin(0.50); // Should show error
         
-        System.out.println("\n=== Testing Insufficient Funds ===");
-        vendingMachine = new VendingMachine(3);           // Reset machine
-        vendingMachine.selectItem();
-        vendingMachine.insertCoin(3);                     // Insert insufficient amount
-        vendingMachine.dispenseItem();                     // Should fail
+        System.out.println("\n2. Testing ItemSelected State:");
+        machine.insertCoin(0.50); // Should add to balance
+        machine.selectItem(); // Should show error
+        machine.dispenseItem(); // Should dispense (now $1.00 total)
         
-        System.out.println("\n=== Testing Out of Order ===");
-        vendingMachine.setOutOfOrder();
-        vendingMachine.selectItem();                       // Should fail
-        vendingMachine.insertCoin(5);                      // Should fail
-        vendingMachine.dispenseItem();                      // Should fail
+        System.out.println("\n3. Testing Dispensing State:");
+        machine.selectItem(); // Should show waiting message
+        machine.insertCoin(0.25); // Should show waiting message
+        machine.dispenseItem(); // Should complete and return to Idle
+        
+        System.out.println("\n4. Testing OutOfOrder State:");
+        machine.setOutOfOrder(); // Set out of order
+        machine.selectItem(); // Should show out of order
+        machine.insertCoin(1.00); // Should show out of order
+        machine.dispenseItem(); // Should show out of order
     }
 }

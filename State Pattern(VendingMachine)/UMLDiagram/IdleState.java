@@ -1,30 +1,28 @@
-// IdleState.java
 public class IdleState implements VendingMachineState {
     
     @Override
-    public void selectItem(VendingMachine vendingMachine) {
-        if (vendingMachine.hasInventory()) {
-            System.out.println("Item selected successfully");
-            vendingMachine.setState(new ItemSelectedState());
+    public void selectItem(VendingMachine machine) {
+        if (machine.getInventory() > 0) {
+            System.out.println("Item selected. Please insert coins.");
+            machine.setState(new ItemSelectedState());
         } else {
-            System.out.println("Sorry, item is out of stock");
-            vendingMachine.setState(new OutOfOrderState());
+            System.out.println("Sorry, item out of stock.");
         }
     }
     
     @Override
-    public void insertCoin(VendingMachine vendingMachine, int amount) {
-        System.out.println("Please select an item first");
+    public void insertCoin(VendingMachine machine, double amount) {
+        System.out.println("Please select an item first.");
     }
     
     @Override
-    public void dispenseItem(VendingMachine vendingMachine) {
-        System.out.println("Please select an item first");
+    public void dispenseItem(VendingMachine machine) {
+        System.out.println("Please select an item and insert coins first.");
     }
     
     @Override
-    public void setOutOfOrder(VendingMachine vendingMachine) {
-        System.out.println("Vending machine is now out of order");
-        vendingMachine.setState(new OutOfOrderState());
+    public void setOutOfOrder(VendingMachine machine) {
+        System.out.println("Machine is now out of order.");
+        machine.setState(new OutOfOrderState());
     }
 }
