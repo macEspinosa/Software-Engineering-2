@@ -7,22 +7,22 @@ A vending machine needs to manage different states, including "Idle", "ItemSelec
 
 ## Requirements
 
-### 💤 Idle State:
+### Idle State:
 Allow item selection.  
 Disallow dispensing items and inserting coins.
 
 
-### 🛒 ItemSelected State:
+### ItemSelected State:
 Allow inserting coins and dispensing items.  
 Disallow item selection.
 
 
-### 📦 Dispensing State:
+### Dispensing State:
 Allow no operations.  
 Automatically transition back to the "Idle" state after dispensing is complete.
 
 
-### 🚫 OutOfOrder State:
+### OutOfOrder State:
 Disallow all operations.
 
 ---
