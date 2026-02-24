@@ -4,7 +4,7 @@
 We will design an ATM system for BPI (Bank of the Philippine Islands) that dispenses cash in denominations of 1000 pesos, 500 pesos, and 100 pesos bills. The system should follow the Chain of Responsibility design pattern to handle the dispensing of cash requests efficiently.
 
 ## UML Diagram
-![UML Diagram](UMLDiagram/UMLImage.png)
+![UML Diagram](UMLDIAGRAM/UMLImage.png)
 
 In this implementation, ATMDispenseChain class handles the dispensing logic for BPI's ATM system with denominations of 1000, 500, and 100 peso bills. The BPI_Atm class allows users to adjust (hard-coded) an amount and initiates the dispensing process using the Chain of Responsibility pattern.
 
