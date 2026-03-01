@@ -20,9 +20,6 @@ In the provided example, the elements of the Chain of Responsibility pattern can
 
 **2. Waste Collection Chain:** Implement a chain of responsibility pattern to handle different types of waste containers. Each handler in the chain should be responsible for collecting and disposing of a specific type of waste.
 
-**3. Waste Collection Process:** 
-    **a. The system should initialize a chain of waste collectors, each responsible for a different type of waste.
-    **b. When a waste container is full or needs disposal, the system should trigger the waste collection process.
-    **c. The appropriate waste collector in the chain should handle the disposal based on the type and capacity of the waste container.
+**3. Waste Collection Process:** The system should initialize a chain of waste collectors, each responsible for a different type of waste.When a waste container is full or needs disposal, the system should trigger the waste collection process.The appropriate waste collector in the chain should handle the disposal based on the type and capacity of the waste container.
 
 **4. Validation:** Ensure that waste containers are correctly identified and disposed of by the appropriate waste collector in the chain.
