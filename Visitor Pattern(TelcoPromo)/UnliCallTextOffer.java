@@ -1,3 +1,3 @@
 public interface UnliCallTextOffer {
-    String showUnliCallsTextOffer(TelcoSubscription telco, String telcoName);
+    String showUnliCallsTextOffer(String telcoName, boolean unliCallText);
 }

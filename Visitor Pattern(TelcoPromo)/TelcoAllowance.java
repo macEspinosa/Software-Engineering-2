@@ -1,16 +1,23 @@
+import java.util.*;
+
 public class TelcoAllowance implements UsagePromo {
+    
+    private static Map<String, Integer> dataAllowanceMap = new HashMap<>();
+    
+    static {
+        dataAllowanceMap.put("Smart", 15);
+        dataAllowanceMap.put("Globe", 10);
+        dataAllowanceMap.put("Ditto", 8);
+    }
+
     @Override
-    public String showAllowance(String telcoName, int promoPrice) {
-        String allowance = "";
+    public String showAllowance(String telcoName, double money) {
+        int dataAllowance = dataAllowanceMap.getOrDefault(telcoName, 0);
         
-        if (telcoName.equals("Smart")) {
-            allowance = "15 GB";
-        } else if (telcoName.equals("Globe")) {
-            allowance = "10 GB";
-        } else if (telcoName.equals("Ditto")) {
-            allowance = "8 GB";
+        if (dataAllowance == 0) {
+            return "No data allowance offer available for " + telcoName;
         }
         
-        return allowance + " for ₱" + promoPrice + " per month";
+        return dataAllowance + " GB for ₱" + money + " per month";
     }
 }
