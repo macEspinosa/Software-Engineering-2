@@ -12,21 +12,13 @@ public class UnliCallTextPackage implements UnliCallTextOffer {
 
     @Override
     public String showUnliCallsTextOffer(String telcoName, boolean unliCallText) {
+        
         String message = unliCallTextMap.get(telcoName);
         
         if (message == null) {
             return telcoName + " does not offer unlimited calls and texts.";
         }
         
-        // Additional check based on the boolean parameter
-        if (!unliCallText && telcoName.equals("Smart")) {
-            return unliCallTextMap.get("Smart");
-        } else if (unliCallText && (telcoName.equals("Globe") || telcoName.equals("Ditto"))) {
-            return unliCallTextMap.get(telcoName);
-        } else if (!unliCallText && (telcoName.equals("Globe") || telcoName.equals("Ditto"))) {
-            return telcoName + " should have unlimited calls and texts but parameter says false.";
-        } else {
-            return telcoName + " does not offer unlimited calls and texts.";
-        }
+        return message;
     }
 }
